@@ -1,0 +1,11 @@
+<h1><%= @list.name %></h1>
+
+<a href="/fakelink">Add an Item</a>
+<ul>
+<% @list.items.each do | item | %>
+    <li><%=  item.name %></li>
+    <% end %>
+</ul>
+
+
+<a href="/fakelink">Add/Remove/Edit Multiple Items</a>
