@@ -1,7 +1,6 @@
 class ListsController < ApplicationController
 
     get '/fridge' do
-        binding.pry
         @list =  user_lists[0]
         erb :'/lists/show'
     end

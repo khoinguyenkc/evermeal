@@ -1,0 +1,21 @@
+<h1>Edit item</h1>
+
+
+<form action="/items/<%= @item.id %>/" method="POST">
+<input type="hidden" name="_method" value="patch">
+Name: (required) <input name="name" value="<%= @item.name %>" ><br>
+Cabinet: (required) <br>
+<input name="list" type="radio" value="fridge" <%='checked' if @item.list.name.downcase == "fridge" %>>Fridge<br>
+<input name="list" type="radio" value="freezer" <%='checked' if @item.list.name.downcase == "freezer" %>>Freezer<br>
+<input name="list" type="radio" value="pantry" <%='checked' if @item.list.name.downcase == "pantry" %>>Pantry<br>
+<input name="list" type="radio" value="spices" <%='checked' if @item.list.name.downcase == "spices" %>>Spices<br>
+
+Amount: <input name="amount" value="<%= @item.amount %>" ><br>
+Good for <input name="expire" > more days from today. (This item was added X days ago - might code this later)<br>
+
+<input type="submit" value="Save Changes">
+</form>
+
+
+
+

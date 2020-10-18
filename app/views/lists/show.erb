@@ -1,9 +1,22 @@
 <h1><%= @list.name %></h1>
 
-<a href="/fakelink">Add an Item</a>
+<a href="/items/new/<%= @list.name.downcase %>">Add an Item</a>
 <ul>
 <% @list.items.each do | item | %>
-    <li><%=  item.name %></li>
+    <li><%=  item.name %>
+    <a href="/items/<%= item.id %>/edit">Edit</a>
+
+    link move to fridge
+    link move to freezer  
+    link move to pantry
+    link move to spices
+    <br>
+    <form action="/items/<%= item.id %>/delete" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+    </form>    
+
+    </li>
     <% end %>
 </ul>
 

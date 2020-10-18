@@ -54,8 +54,23 @@ class ApplicationController < Sinatra::Base
           result = [ fridge, freezer, pantry, spices ]  
         end
 
-    
-    
+        def give_me_list(listname)
+          case listname
+          when "fridge"
+              list = user_lists[0]
+          when "freezer"
+              list = user_lists[1]
+          when "pantry"
+              list = user_lists[2]
+          when "spices"
+              list = user_lists[3]
+          end
+          list
+        end
+
+
+
+        
       end
     
 

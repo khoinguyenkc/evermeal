@@ -3,10 +3,10 @@ Create a new kitchen item
 <form action="/items" method="POST">
 Name: (required) <input name="name" ><br>
 Cabinet: (required) <br>
-<input name="list" type="radio" value="fridge">Fridge<br>
-<input name="list" type="radio" value="freezer">Freezer<br>
-<input name="list" type="radio" value="pantry">Pantry<br>
-<input name="list" type="radio" value="spices">Spices<br>
+<input name="list" type="radio" value="fridge" <%='checked' if @prefilledcab == "fridge" %>>Fridge<br>
+<input name="list" type="radio" value="freezer" <%='checked' if @prefilledcab == "freezer" %>>Freezer<br>
+<input name="list" type="radio" value="pantry" <%='checked' if @prefilledcab == "pantry" %>>Pantry<br>
+<input name="list" type="radio" value="spices" <%='checked' if @prefilledcab == "spices" %>>Spices<br>
 
 Amount: <input name="amount" ><br>
 Good for <input name="expire"> more days from today<br>
