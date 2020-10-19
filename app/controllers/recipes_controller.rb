@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
     end
 
     post '/recipes' do
-        #NOT TESTED YET
+        #TESTED. works
 
 
         # @params = params
@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
 
         #2.  process ingredients 
             params[:recipe][:ing].each do | inghash |
-                if !inhghash[:name].empty?  
+                if !inghash[:name].empty?  
                     #a) find ingredient/create one if new
                     ingredient = Ingredient.find_or_create_by(name: inghash[:name])
                     #b) associate recipe <--> ingredients 
@@ -30,6 +30,9 @@ class RecipesController < ApplicationController
                     if !inghash[:amount].empty?
                     rec_ing_instance = RecipeIngredient.find_by(ingredient_id: ingredient.id, recipe_id: newrecipe.id) # this returns the first item that matches both criteria
                     rec_ing_instance.amount = inghash[:amount] 
+                    rec_ing_instance.save
+                    #warning, apparently you need to save rec ing instance to a variable, THEN set amount, then save
+                    #miss one step it won't save! alternatively, u can use update. that will save.
                     end
                 end
             end
@@ -37,20 +40,22 @@ class RecipesController < ApplicationController
         else
             redirect '/recipes/new'
         end
-
+        
     end
 
     get '/recipes/:id' do
-        #NOT TESTED YET
-        @recipe = Item.find_by_id(params[:id])
+        #THIS WORKS. tested
+        @recipe = Recipe.find_by_id(params[:id])
         
         if is_logged_in?
             if @recipe
                 recipeowner = @recipe.user 
                 if recipeowner == current_user 
+                    
                     erb :'/recipes/show'
                 else 
                     "you dont own this item"
+                    
                 end
             else 
                 "recipe not found"
@@ -61,7 +66,9 @@ class RecipesController < ApplicationController
     end
 
 
-
+    get '/recipes/:id/edit' do
+    end
+    
 
         
         

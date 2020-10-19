@@ -1,0 +1,10 @@
+<%= @recipe.name %>
+<br>
+<%= @recipe.content %>
+<ul>
+<% @recipe.ingredients.each do | ingredient | %>
+    <% rec_ing_instance = RecipeIngredient.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id) %>
+    
+    <li>    <%= rec_ing_instance.amount %> of <a href="/ingredients/<%= ingredient.id %>"><%= ingredient.name %></a> </li> 
+    <% end %>
+</ul>
