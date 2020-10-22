@@ -1,0 +1,37 @@
+<h1>Edit item</h1>
+
+
+<form action="/recipes/<%= @recipe.id %>" method="POST">
+<input type="hidden" name="_method" value="patch">
+
+
+
+
+Name: (required) <input name="recipe[name]" value="<%= @recipe.name %>"><br>
+<br>
+Instruction (required): 
+<br>
+<textarea name="recipe[content]" rows="15" cols="50"><%= @recipe.content %>"</textarea><br>
+<br>
+Ingredients: <br>
+(Do not have the same ingredient more than once in a recipe. It won't process properly) <br>
+<% @recipe.ingredients.each do | ingredient | %>
+    <% rec_ing_instance = RecipeIngredient.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id) %>
+    
+      
+    Amount: <input name="recipe[ing][][amount]" value="<%= rec_ing_instance.amount %>">
+    
+    Ingredient: <input name="recipe[ing][][name]" value="<%= ingredient.name %>">
+    <br>
+    <% end %>
+
+<% howmany = 15 - @recipe.ingredients.size %>
+<% howmany.times {  %>
+Amount: <input name="recipe[ing][][amount]">
+Ingredient: <input name="recipe[ing][][name]">
+<br>
+<% } %>
+
+<input type="submit" value="Save Changes">
+</form>
+

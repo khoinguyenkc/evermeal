@@ -1,10 +1,54 @@
-<%= @recipe.name %>
+<h2><%= @recipe.name %></h2>
 <br>
-<%= @recipe.content %>
+
 <ul>
 <% @recipe.ingredients.each do | ingredient | %>
     <% rec_ing_instance = RecipeIngredient.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id) %>
     
-    <li>    <%= rec_ing_instance.amount %> of <a href="/ingredients/<%= ingredient.id %>"><%= ingredient.name %></a> </li> 
+    <li>    
+    <%= rec_ing_instance.amount %> of 
+    <a href="/ingredients/<%= ingredient.id %>"><%= ingredient.name %></a>
+    -----------------
+    
+    <a href="/items/search/<%=  ingredient.name %>" >Search in kitchen</a>
+
+    <div style="display: inline-block">
+        <form action="/groceries" method="POST">
+        <input type="hidden" name="source" value="recipe-<%= @recipe.id %>">
+        <input type="hidden" name="name" value="<%=  ingredient.name %>">
+        <input type="submit" value="Add to grocery">
+        </form>
+    </div>
+
+
+     </li> 
+    <% end %>
+
+    
+    
+</ul>
+<h3>Instructions: </h3>
+<%= @recipe.content %>
+
+<br><br>
+Comments:
+<ul>
+<% @recipe.comments.each do | comment | %>
+    <li> 
+    <%= comment.content %> 
+    <a href="/comments/<%= comment.id %>/edit">Edit</a>
+    <form action="/comments/<%= comment.id %>/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+    
+    </li>
+    
     <% end %>
 </ul>
+<br><br>
+<a href="/recipes/<%= @recipe.id %>/edit">Edit Recipe</a>
+<br>
+<form action="/recipes/<%=@recipe.id%>/delete" method="POST">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type="submit" value="Delete Recipe">
+</form>

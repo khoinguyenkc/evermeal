@@ -1,0 +1,13 @@
+
+
+
+<h2>Edit grocery item</h2>
+<form action="/groceries/<%= @groceryitem.id %>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+
+Name: <input type="text" name="name" value="<%= @groceryitem.name %>" ><br>
+
+Amount:  <input type="text" name="amount" value="<%= @groceryitem.amount %>"> 
+<br>
+<input type="submit" value="Edit item">
+</form>

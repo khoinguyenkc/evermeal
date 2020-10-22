@@ -19,4 +19,9 @@ class ListsController < ApplicationController
         @list =  user_lists[3]
         erb :'/lists/show'
     end
+
+    get '/spoiled' do
+        @list = user_lists[4]
+        erb :'/lists/show'
+    end
 end

@@ -1,0 +1,14 @@
+#This is the form if a grocery item is created manually, not from quick add
+#quick add does not go through this form
+#but it should still include a :source attribute, with value as "groceries" (NOT EMPTY STRING!!!! will cause problems), to avoid nil class errors
+
+<h2>Add a new grocery item</h2>
+<form action="/groceries" method="POST">
+<input type="hidden" name="source" value="groceries">
+
+Name: <input type="text" name="name" ><br>
+
+Amount:  <input type="text" name="amount" > 
+<br>
+<input type="submit" value="Add item">
+</form>

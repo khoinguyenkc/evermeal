@@ -1,0 +1,35 @@
+<h2> Your Tasks </h2>
+We are not doing due in X days feature for now.
+<a href="/tasks/new">Add a new task </a>
+<ul>
+<% @tasks.each do |task| %>
+  <li>
+
+
+  <%= task.name %> -------------
+
+  <% if task.due_in_x_days  %>
+  <% if task.due_in_x_days < 0 %>
+      <%= -task.due_in_x_days %> days past due 
+      <% elsif task.due_in_x_days == 0 %>
+      Due today
+      <% else %>
+      Due in <%= task.due_in_x_days %> more days
+    <% end %>
+    <% end %>
+
+  <a href="/tasks/<%= task.id %>/edit">Edit</a>
+
+  <div style="display: inline-block">
+  <form action="/tasks/<%= task.id %>/delete" method="POST">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type="submit" value="Delete Task">
+</form>
+  </div>
+
+
+
+
+  </li>
+<% end %>
+</ul>

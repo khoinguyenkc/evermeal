@@ -11,9 +11,26 @@ class ItemsController < ApplicationController
         if !params[:name].empty? && !params[:list].empty?
 
             newitem = Item.create(name: params[:name], amount: params[:amount], expire: params[:expire])
-
+            #SOMEHOW THE amount is lost if it's moved from grocery!?
             list = give_me_list(params[:list])  
             list.items << newitem
+            if params[:moved_from_grocery_id] 
+                groceryitem = GroceryItem.find_by(id: params[:moved_from_grocery_id].to_i)
+                #delete grocery item
+                groceryitem.delete
+                #go back to grocery page, not to list
+                redirect "/groceries"
+            end
+
+            if params[:moved_from_cabinet_item_id] 
+                olditem = Item.find_by(id: params[:moved_from_cabinet_item_id].to_i)
+                listofolditem = olditem.list.name.downcase
+                #delete  item
+                olditem.delete
+                #go back to grocery page, not to list
+                redirect "/#{listofolditem}"
+            end
+
             list.save
             redirect "/#{params[:list]}" #ex: /freezer
         else
@@ -31,6 +48,8 @@ class ItemsController < ApplicationController
         erb :'/items/new'
 
     end
+
+    
 
     get '/items/:id/edit' do
         #edit form
@@ -53,7 +72,7 @@ class ItemsController < ApplicationController
         end
     end
 
-    patch '/items/:id/' do
+    patch '/items/:id' do
         #process edit. be careful with the switching of lists
         #make sure every list is cleared properly
         redirect to "/items/#{params[:id]}/edit" if params[:name].empty? 
@@ -120,6 +139,34 @@ class ItemsController < ApplicationController
         end
       
     end
+
+    get '/items/search/:ingname' do
+        #search thru 4 lists &accumulate results
+        @searchquery = params[:ingname]
+        @resultarray = []
+
+        if is_logged_in?
+            
+            user_lists.each do | list |
+                if list.name.downcase != "spoiled"
+                    list.items.each  do | item |
+                        if item.name.include?(params[:ingname]) && !@resultarray.include?(item)
+                            @resultarray << item 
+                        end
+                    end
+                end
+            end
+            #display result    
+            
+            erb :'/items/searchresult'
+            
+        else
+            redirect '/login'
+        end
+
+
+    end
+
 
 
 end

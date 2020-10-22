@@ -9,6 +9,7 @@ end
 
 
 use Rack::MethodOverride
+use CommentsController
 use GroceryItemsController
 use IngredientsController
 use ItemsController

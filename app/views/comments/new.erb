@@ -1,0 +1,11 @@
+
+Add a new comment to recipe
+<form action="/comments" method="POST">
+<input type="hidden" name="recipesourceid" value="<%= @recipesourceid %>" >
+
+
+Content: <input type="text" name="content" ><br>
+
+
+<input type="submit" value="Add comment">
+</form>

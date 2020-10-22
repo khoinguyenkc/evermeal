@@ -37,10 +37,12 @@ class ApplicationController < Sinatra::Base
           freezer = List.create(name: "Freezer") 
           pantry = List.create(name: "Pantry") 
           spices = List.create(name: "Spices")
+          spoiled = List.create(name: "Spoiled")
           current_user.lists << fridge
           current_user.lists << freezer 
           current_user.lists << pantry  
           current_user.lists << spices
+          current_user.lists << spoiled
           current_user.save
           end
           #this must be safeguarded because the way each cabinet is laoded is we find by name
@@ -51,7 +53,8 @@ class ApplicationController < Sinatra::Base
           freezer =  current_user.lists.find { | list | list.name == "Freezer" }
           pantry =  current_user.lists.find { | list | list.name == "Pantry" }
           spices =  current_user.lists.find { | list | list.name == "Spices" }
-          result = [ fridge, freezer, pantry, spices ]  
+          spoiled =  current_user.lists.find { | list | list.name == "Spoiled" }
+          result = [ fridge, freezer, pantry, spices, spoiled ]  
         end
 
         def give_me_list(listname)
@@ -64,6 +67,8 @@ class ApplicationController < Sinatra::Base
               list = user_lists[2]
           when "spices"
               list = user_lists[3]
+          when "spoiled"
+              list = user_lists[4]
           end
           list
         end

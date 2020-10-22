@@ -1,0 +1,15 @@
+<h2> Recipes </h2>
+<ul>
+<% @recipes.each do |recipe| %>
+  <li>
+  <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a> -------------
+  <a href="/recipes/<%= recipe.id %>/edit">Edit</a>
+  <div style="display: inline-block">
+  <form action="/recipes/<%= recipe.id %>/delete" method="POST">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type="submit" value="Delete Recipe">
+</form>
+  </div>
+  </li>
+<% end %>
+</ul>

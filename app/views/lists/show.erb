@@ -1,21 +1,74 @@
 <h1><%= @list.name %></h1>
-
+Note: later, make spoiled list only display the last 30 items or so spoiled no more. 
+dont want to turn it into a guiltfest
+<br>
 <a href="/items/new/<%= @list.name.downcase %>">Add an Item</a>
 <ul>
 <% @list.items.each do | item | %>
-    <li><%=  item.name %>
+    <li>
+    <% if item.amount && item.amount != "" %>
+    <%= item.amount %> of 
+    <% end %>
+    <%=  item.name %>
+    --------------
+    <% if item.fresh_for_x_more_days  %>
+    <% if item.fresh_for_x_more_days < 0 %>
+        <%= -item.fresh_for_x_more_days %> days past due 
+        <% elsif item.fresh_for_x_more_days == 0 %>
+        Fresh for today
+        <% else %>
+        Fresh for <%= item.fresh_for_x_more_days %> more days
+      <% end %>
+      <% end %>
+
+
+
+  
+
     <a href="/items/<%= item.id %>/edit">Edit</a>
 
-    link move to fridge
-    link move to freezer  
-    link move to pantry
-    link move to spices
-    <br>
+    <a href="/recipes/search/<%=  item.name %>" >Search for recipes</a>
+
+
+    <div style="display: inline-block">
+<form action="/groceries" method="POST">
+<input type="hidden" name="source" value="<%= @list.name.downcase %>">
+<input type="hidden" name="name" value="<%=  item.name %>">
+<input type="submit" value="Add to grocery">
+</form>
+    </div>
+    <!--
+    MOVE to SPOILED list
+    we are sending this form to POST '/items/new'
+    this is processed specially because it has the attribute moved_from_cabinet_item_id
+    we will create a new item, put it in spoiled list
+    remove old item, which automatically removes associations
+    -->
+    <% if @list.name.downcase != "spoiled" %>
+    <div style="display: inline-block">
+    <form action="/items" method="POST">
+    <input type="hidden" name="moved_from_cabinet_item_id" value="<%= item.id %>">
+    <input type="hidden" name="name" value="<%= item.name %>" >
+    <input type="hidden" name="list"  value="spoiled">
+    <input type="hidden" name="amount"  value="<%= item.amount %>">
+    <input type="submit" value="Mark as Spoiled">
+    </form>
+    </div>
+    <% end %>
+    
+    <% if @list.name.downcase != "spoiled" %>
+    <div style="display: inline-block">
     <form action="/items/<%= item.id %>/delete" method="POST">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete">
     </form>    
+    </div>
+    <% end %>
 
+
+    quick add to fridge
+    quick add to freezer  
+    (fridge <-> freezer only) 
     </li>
     <% end %>
 </ul>

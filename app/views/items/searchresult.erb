@@ -1,0 +1,16 @@
+  <% if !@resultarray.empty? %> 
+
+<ul>
+<% @resultarray.each do | item | %>
+    <li>
+    <% if item.amount && item.amount != "" %>
+        <%= item.amount %> of 
+    <% end %>
+    <%=  item.name %> in
+    <a href="<%=  item.list.name.downcase %>"><%=  item.list.name %></a>
+    </li>
+<% end %>
+</ul>
+ <% else %> 
+ There is no "<%= @searchquery %>" item found in your kitchen cabinets. 
+<% end %> 

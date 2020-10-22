@@ -1,0 +1,51 @@
+<h2> Your Groceries </h2>
+<a href="/groceries/new">Add a new grocery item </a>
+<ul>
+<% @user_groceries.each do | grocery_item | %>
+  <li>
+  <% if grocery_item.amount && grocery_item.amount != "" %>
+  <%= grocery_item.amount %> of 
+  <% end %>
+  <%= grocery_item.name %> -------------
+
+
+
+  
+      <% current_user.lists.each do | list | %>
+        <div style="display: inline-block">
+<form action="/items" method="POST">
+<input type="hidden" name="moved_from_grocery_id" value="<%= grocery_item.id %>">
+<input type="hidden" name="name" value="<%= grocery_item.name %>" >
+<input type="hidden" name="list"  value="<%= list.name.downcase %>">
+<input type="hidden" name="amount"  value="<%= grocery_item.amount %>">
+<input type="submit" value="Move to <%= list.name %>">
+</form>
+</div>
+
+<% end %>
+
+
+
+
+
+
+  <a href="/groceries/<%= grocery_item.id %>/edit">Edit</a>
+  <div style="display: inline-block">
+  <form action="/groceries/<%= grocery_item.id %>/delete" method="POST">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type="submit" value="Delete Item">
+</form>
+  </div>
+  </li>
+<% end %>
+</ul>
+
+note:
+BUTTON to MOVE to Kitchen cabinets
+  need to refactor post '/items/' to process a one click form to accept....
+  take inpisration from grocery items!!!!!
+  plan: do a form, POST="groceries/move/:id/cabinet"
+    it will send a form to post '/items/new' to create a new item 
+    then it will delete. never mind. that might not be possible
+    so maybe we'll just send a form to POST "/items"
+    to do that, we first modify the POST '/items' to have the feature to delete the 

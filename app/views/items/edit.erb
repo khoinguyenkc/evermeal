@@ -1,7 +1,7 @@
 <h1>Edit item</h1>
 
 
-<form action="/items/<%= @item.id %>/" method="POST">
+<form action="/items/<%= @item.id %>" method="POST">
 <input type="hidden" name="_method" value="patch">
 Name: (required) <input name="name" value="<%= @item.name %>" ><br>
 Cabinet: (required) <br>
