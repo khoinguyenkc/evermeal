@@ -1,0 +1,30 @@
+<h1>Batch edit items</h1>
+
+(Do not have the same name more than once in a list. It won't process properly) <br>
+
+
+<form action="/items/batch" method="POST">
+<input type="hidden" name="_method" value="patch">
+
+<input name="name" type="hidden" value="">
+<input name="list" type="hidden" value="<%= @list.name.downcase %>" >
+
+
+<% @list.items.each do | item | %>
+    Name: (required) <input name="[items][][name]" value="<%= item.name %>" ><br>
+    Amount: <input name="[items][][amount]" value="<%= item.amount %>" ><br>
+    Good for <input name="[items][][expire]" value="<%= item.fresh_for_x_more_days %>"> more days from today<br>
+    <br>
+    <% end %>
+
+    <% 15.times {  %>
+
+    Name: (required) <input name="[items][][name]" ><br>
+    Amount: <input name="[items][][amount]" ><br>
+    Good for <input name="[items][][expire]"> more days from today<br>
+    <br>
+    <% } %>
+    
+<input type="submit" value="Save Changes">
+</form>
+

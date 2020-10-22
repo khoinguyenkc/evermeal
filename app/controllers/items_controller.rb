@@ -5,10 +5,13 @@ class ItemsController < ApplicationController
         erb :'/items/new'
     end
 
+    
+
     post '/items' do
         #{"name"=>"fritata", "list"=>"pantry", "amount"=>"2 pies", "expire"=>"7"}
-        
-        if !params[:name].empty? && !params[:list].empty?
+        if params[:items] && !params[:items].empty? #IF this is a BATCH ADD
+            batch_add_items(params)
+        elsif params[:name] && !params[:name].empty? && !params[:list].empty? #if a valid SINGLE ADD
 
             newitem = Item.create(name: params[:name], amount: params[:amount], expire: params[:expire])
             #SOMEHOW THE amount is lost if it's moved from grocery!?
@@ -49,6 +52,11 @@ class ItemsController < ApplicationController
 
     end
 
+    get '/items/new/:cabinet/batch' do
+        @list = give_me_list(params[:cabinet])
+        erb :'/items/batch_new'
+    end
+
     
 
     get '/items/:id/edit' do
@@ -70,6 +78,53 @@ class ItemsController < ApplicationController
         else
             redirect '/login'
         end
+    end
+
+    get '/items/edit/:cabinet/batch' do
+        if is_logged_in?
+            @list = give_me_list(params[:cabinet])
+            erb :'/items/batch_edit'
+        else
+            redirect '/login'
+        end
+    end
+
+    patch '/items/batch' do
+        if is_logged_in?
+            list = give_me_list(params[:list]) 
+            
+                params[:items].each do | itemhash |
+                    if !itemhash[:name].empty?
+                        if list.items.find_by(name: itemhash[:name]) #aka IF OLD - if list.items  include this item insatce with this NAME
+                            #find the item
+                            olditem = list.items.find_by(name: itemhash[:name])
+                            #update the item
+                            olditem.update(name: itemhash[:name], amount: itemhash[:amount], expire: itemhash[:expire])
+                            #save item
+                            olditem.save
+                        elsif !list.items.find_by(name: itemhash[:name]) # aka list.items doesn't includ this NAME 
+                            #create item
+                            newitem = Item.create(name: itemhash[:name], amount: itemhash[:amount], expire: itemhash[:expire])
+                            #associate with list
+                            list.items << newitem
+                        end
+                    end
+                end
+
+
+            #delete old items that user no longer want on the list:
+            list.items.each do | existentitem |
+                #search thru array if any items from the edit form has this name
+                searchresult = params[:items].find { |itemhash| itemhash[:name] == existentitem.name }
+                #delete item if search didn't find anything
+                existentitem.delete if !searchresult
+            end
+
+            redirect "/#{params[:list]}"
+        else
+            redirect '/login'
+        end
+
     end
 
     patch '/items/:id' do
@@ -167,6 +222,25 @@ class ItemsController < ApplicationController
 
     end
 
+    helpers do
+        def batch_add_items(params) 
+            params[:items].each do | itemhash |
+                if !itemhash[:name].empty?
+                    #create item
+                    newitem = Item.create(name: itemhash[:name], amount: itemhash[:amount], expire: itemhash[:expire])
+                    #associate with list
+                    list = give_me_list(params[:list])  
+                    binding.pry
+                    list.items << newitem
+                    
+                end
+            end
+            redirect "/#{params[:list]}"
+        end
+
+
+
+    end #end helpers
 
 
 end

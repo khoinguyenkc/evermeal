@@ -3,6 +3,9 @@ Note: later, make spoiled list only display the last 30 items or so spoiled no m
 dont want to turn it into a guiltfest
 <br>
 <a href="/items/new/<%= @list.name.downcase %>">Add an Item</a>
+<a href="/items/new/<%= @list.name.downcase %>/batch">Batch Add Items</a>
+
+/items/new/:cabinet/batch
 <ul>
 <% @list.items.each do | item | %>
     <li>
@@ -74,4 +77,4 @@ dont want to turn it into a guiltfest
 </ul>
 
 
-<a href="/fakelink">Add/Remove/Edit Multiple Items</a>
+<a href="/items/new/:cabinet/batch">Add/Remove/Edit Multiple Items</a>

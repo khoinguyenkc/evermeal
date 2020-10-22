@@ -1,0 +1,17 @@
+Add multiple kitchen items to <%= @list.name %>
+
+<form action="/items" method="POST">
+<input name="name" type="hidden" value="">
+<input name="list" type="hidden" value="<%= @list.name.downcase %>" >
+
+<% 15.times {  %>
+
+Name: (required) <input name="[items][][name]" ><br>
+Amount: <input name="[items][][amount]" ><br>
+Good for <input name="[items][][expire]"> more days from today<br>
+<br>
+<% } %>
+
+<input type="submit" value="Add Items">
+
+</form>
