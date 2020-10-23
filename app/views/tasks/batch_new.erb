@@ -1,0 +1,17 @@
+
+
+Add multiple tasks 
+
+<form action="/tasks" method="POST">
+<input name="name" type="hidden" value="">
+
+<% 15.times {  %>
+
+Name: (required) <input name="[tasks][][name]" ><br>
+Due in <input name="[tasks][][due]" > days<br>
+<br>
+<% } %>
+
+<input type="submit" value="Add Tasks">
+
+</form>

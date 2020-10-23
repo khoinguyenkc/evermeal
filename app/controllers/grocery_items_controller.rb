@@ -9,29 +9,51 @@ class GroceryItemsController < ApplicationController
           end
     end
 
+    get '/groceries/new/batch' do
+        if is_logged_in?
+            erb :'/groceries/batch_new'
+          else
+            redirect to '/login'
+          end
+    end
+
     post '/groceries' do
         #NOT TESTED YET
         #if its a one click add, it has no separte form page. it just has a button to send the form
         if is_logged_in?
-            
-            if params[:name].empty?
-                redirect to "/groceries/new"
-            else
-                newgroceryitem = GroceryItem.create(name: params[:name], amount: params[:amount])
-                current_user.grocery_items << newgroceryitem
-                current_user.save
-                if newgroceryitem.save 
-                    listnames = ["fridge", "freezer", "pantry", "spices"]
-                    if listnames.include?(params[:source])
-                        redirect "/#{params[:source]}"
-                    elsif  params[:source].include?("recipe") #ex: true if params[:source] is "recipe-43"
-                        recipeid = params[:source].split("-").last
-                        redirect "/recipes/#{recipeid}"
-                    else
-                        redirect  "/groceries"
+            if params[:items] && !params[:items].empty? #if multiple add
+                params[:items].each do | itemhash |
+                    if !itemhash[:name].empty?
+                        #create item
+                        newitem = GroceryItem.create(name: itemhash[:name], amount: itemhash[:amount])
+                        #associate with list
+                        current_user.grocery_items << newitem
+                        current_user.save
                     end
-                else
+                end
+                redirect "/groceries"
+            elsif #if single add
+                if params[:name].empty?
                     redirect to "/groceries/new"
+                else
+
+                    newgroceryitem = GroceryItem.create(name: params[:name], amount: params[:amount])
+                    current_user.grocery_items << newgroceryitem
+                    current_user.save
+                    if newgroceryitem.save 
+                        listnames = ["fridge", "freezer", "pantry", "spices"]
+                        if listnames.include?(params[:source])
+                            redirect "/#{params[:source]}"
+                        elsif  params[:source].include?("recipe") #ex: true if params[:source] is "recipe-43"
+                            recipeid = params[:source].split("-").last
+                            redirect "/recipes/#{recipeid}"
+                        else
+                            redirect  "/groceries"
+                        end
+                    else
+                        redirect to "/groceries/new"
+                    end
+
                 end
             end
 

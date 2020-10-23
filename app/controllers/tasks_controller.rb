@@ -8,24 +8,41 @@ class TasksController < ApplicationController
           end
     end
 
+    get '/tasks/new/batch' do
+        erb :'/tasks/batch_new'
+    end
+    
     post '/tasks' do
 
         if is_logged_in?
-            
-            if params[:name].empty?
-                redirect to "/tasks/new"
-            else
-                newtask = Task.create(name: params[:name], due: params[:due])
-                current_user.tasks << newtask
-                current_user.save
-                if newtask.save #to be extra safe
-                    redirect to "/tasks"
-                else
-                    redirect to "/tasks/new"
+            if params[:tasks] && !params[:tasks].empty? #if MULTIPLE add
+                params[:tasks].each do | taskhash |
+                    if !taskhash[:name].empty?
+                        #create task
+                        newtask = Task.create(name: taskhash[:name], due: taskhash[:due])
+                        #associate with list
+                        current_user.tasks << newtask
+                        current_user.save
+                    end
                 end
-            end
+                redirect "/tasks"
 
-        else
+            elsif #single add
+                if params[:name].empty?
+                redirect to "/tasks/new"
+                else
+                    newtask = Task.create(name: params[:name], due: params[:due])
+                    current_user.tasks << newtask
+                    current_user.save
+                    if newtask.save #to be extra safe
+                        redirect to "/tasks"
+                    else
+                        redirect to "/tasks/new"
+                    end
+                end
+            
+            end
+        else #not logged in
         redirect to '/login'
         end
     end
@@ -36,6 +53,15 @@ class TasksController < ApplicationController
           erb :'tasks/index'
         else
           redirect to '/login'
+        end
+    end
+
+    get '/tasks/edit/batch' do
+        if is_logged_in?
+            @tasks = current_user.tasks
+            erb :'/tasks/batch_edit'
+        else
+            redirect '/login'
         end
     end
 
@@ -54,6 +80,43 @@ class TasksController < ApplicationController
             else 
                 "task not found"
             end
+        else
+            redirect '/login'
+        end
+    end
+
+
+    patch '/tasks/batch' do
+        if is_logged_in?       
+            @tasks = current_user.tasks     
+                params[:tasks].each do | taskhash |
+                    if !taskhash[:name].empty?
+                        if @tasks.find_by(name: taskhash[:name]) #aka IF OLD -
+                            #find the task
+                            oldtask = @tasks.find_by(name: taskhash[:name])
+                            #update the task
+                            oldtask.update(name: taskhash[:name], due: taskhash[:due])
+                            #save task
+                            oldtask.save
+                        elsif !@tasks.find_by(name: taskhash[:name]) # aka new
+                            #create item
+                            newtask = Task.create(name: taskhash[:name], due: taskhash[:due])
+                            #associate with list
+                            @tasks << newtask
+                        end
+                    end
+                end
+
+
+            #delete old tasks that user no longer want on the list:
+            @tasks.each do | existenttask |
+                #search thru array if any task from the edit form has this name
+                searchresult = params[:tasks].find { |taskhash| taskhash[:name] == existenttask.name }
+                #delete task if search didn't find anything
+                existenttask.delete if !searchresult
+            end
+
+            redirect "/tasks"
         else
             redirect '/login'
         end
