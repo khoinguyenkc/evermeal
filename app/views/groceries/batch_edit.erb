@@ -1,0 +1,27 @@
+<h1>Batch edit groceries</h1>
+
+(Do not have the same name more than once in a list. It won't process properly) <br>
+
+
+<form action="/groceries/batch" method="POST">
+<input type="hidden" name="_method" value="patch">
+
+<input name="name" type="hidden" value="">
+
+
+<% @grocery_items.each do | item | %>
+    Name: (required) <input name="[items][][name]" value="<%= item.name %>" ><br>
+    Amount: <input name="[items][][amount]"  value="<%= item.amount %>" > <br>
+    <br>
+    <% end %>
+
+    <% 15.times {  %>
+
+    Name: (required) <input name="[items][][name]" ><br>
+    Amount: <input name="[items][][amount]" > <br>
+    <br>
+    <% } %>
+    
+<input type="submit" value="Save Changes">
+</form>
+

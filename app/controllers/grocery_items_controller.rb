@@ -95,6 +95,51 @@ class GroceryItemsController < ApplicationController
         end
     end
 
+    get '/groceries/edit/batch' do
+        if is_logged_in?
+            @grocery_items = current_user.grocery_items
+            erb :'/groceries/batch_edit'
+        else
+            redirect '/login'
+        end
+    end
+
+    patch '/groceries/batch' do
+        if is_logged_in?       
+            @grocery_items = current_user.grocery_items     
+            params[:items].each do | itemhash |
+                if !itemhash[:name].empty?
+                    if @grocery_items.find_by(name: itemhash[:name]) #aka IF OLD -
+                        #find the item
+                        olditem = @grocery_items.find_by(name: itemhash[:name])
+                        #update the item
+                        olditem.update(name: itemhash[:name], amount: itemhash[:amount])
+                        #save item
+                        olditem.save
+                    elsif !@grocery_items.find_by(name: itemhash[:name]) # aka new
+                        #create item
+                        newitem = GroceryItem.create(name: itemhash[:name], amount: itemhash[:amount])
+                        #associate with list
+                        @grocery_items << newitem
+                    end
+                end
+            end
+
+            #delete old items that user no longer want on the list:
+            @grocery_items.each do | existentitem |
+                #search thru array if any items from the edit form has this name
+                searchresult = params[:items].find { |itemhash| itemhash[:name] == existentitem.name }
+                #delete item if search didn't find anything
+                existentitem.delete if !searchresult
+            end
+
+            redirect "/groceries"
+        end
+    end
+
+
+
+
 
     patch '/groceries/:id' do
         @groceryitem = GroceryItem.find_by_id(params[:id])
