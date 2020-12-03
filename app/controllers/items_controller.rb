@@ -230,7 +230,6 @@ class ItemsController < ApplicationController
                     newitem = Item.create(name: itemhash[:name], amount: itemhash[:amount], expire: itemhash[:expire])
                     #associate with list
                     list = give_me_list(params[:list])  
-                    binding.pry
                     list.items << newitem
                     
                 end

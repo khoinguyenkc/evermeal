@@ -1,11 +1,33 @@
-<h1>Log In Below:</h1>
+<div style="text-align:center; margin: 0 auto; padding-top: 100px  ">
+<div style="width: 500px; display:inline-block; ">
+    <div class="ui middle aligned center aligned grid" >
+    <div class="column">
+        <h2 class="ui teal image header">
+        <div class="content">
+            Log-in to your account
+        </div>
+        </h2>
+        <form action="/login" method="POST" class="ui large form">
+        <div class="ui stacked segment">
+            <div class="field">
+            <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" id="username" name="username" placeholder="Username">
+            </div>
+            </div>
+            <div class="field">
+            <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <input type="text" id="password" name="password" placeholder="Password">
+            </div>
+            </div>
+            <input type="submit" id="submit" class="ui fluid large teal submit button">
+        </div>
 
-<form action="/login" method="POST">
-<label>Username:</label>
-<input type="text" id="username" name="username">
-<br>
-<label>Password:</label>
-<input type="text" id="password" name="password">
-<br>
-<input type="submit" id="submit" value="Log In">
-</form>
+        <div class="ui error message"></div>
+
+        </form>
+        </div>
+    </div>
+    </div>
+    </div>

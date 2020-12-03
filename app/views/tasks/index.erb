@@ -1,12 +1,51 @@
-<h2> Your Tasks </h2>
-We are not doing due in X days feature for now.
+<style>
+
+input[type="submit"]{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+}
+
+.center-wrapper {
+    background-color: white;
+    border: 1px solid blue;
+    margin: 0 auto;
+    dispay: inline-block;
+    width: 700px;
+    padding-bottom: 200px;
+}
+
+body {
+
+    background-image: url("https://cdn.remodelista.com/wp-content/uploads/2016/12/alice-waters-kitchen-vignette-copper-pot-herbs-oils-1466x978.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+
+}
+
+
+
+</style>
+
+<div class="center-wrapper">
+<h1>Your Tasks</h1>
+
 <a href="/tasks/new">Add a new task </a>
-<ul>
+
+
+<div class="ui celled list">
 <% @tasks.each do |task| %>
-  <li>
+  
+  <div class="item">
 
+  <div class="content">
 
-  <%= task.name %> -------------
+  <div class="header">
+  <%= task.name %>
+  </div>
 
   <% if task.due_in_x_days  %>
   <% if task.due_in_x_days < 0 %>
@@ -18,18 +57,28 @@ We are not doing due in X days feature for now.
     <% end %>
     <% end %>
 
-  <a href="/tasks/<%= task.id %>/edit">Edit</a>
+    <div class="right floated content">
+
+
+  <a class="ui button" href="/tasks/<%= task.id %>/edit">Edit</a>
 
   <div style="display: inline-block">
   <form action="/tasks/<%= task.id %>/delete" method="POST">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
+<span class="ui button">
+<span>
 <input type="submit" value="Delete Task">
+</span>
+
 </form>
   </div>
 
+  </div>  <%# of right floated content div%>
+  </div> <%# of content div%>
+  </div> <%# of item div%>
 
 
-
-  </li>
 <% end %>
-</ul>
+
+</div> <%# of ui celled list div%>
+</div> <%# of center wrapper div%>
