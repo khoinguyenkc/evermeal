@@ -1,7 +1,17 @@
-<h2> Your Groceries </h2>
-<a href="/groceries/new">Add a new grocery item </a><br>
-<a href="/groceries/new/batch">Add multiple grocery items </a> <br>
-<a href="/groceries/edit/batch">Add/Edit/Delete multiple grocery items </a>
+<div class="center-wrapper">
+
+<div class="bannerbox">
+<img src="https://www.saveur.com/resizer/asaf8ciTyhcWxmNBSBTE4r-z6wE=/869x613/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/KUGEATRKRJLEY2BDQDA6DJCD6I.jpg">
+<a  href="">
+
+<span class="top-header"><h1>Your Groceries</h1></span>
+
+</a>
+</div>
+
+<a class="button-link" href="/groceries/new">Add a new grocery item </a>
+<a class="button-link" href="/groceries/new/batch">Add multiple grocery items </a> 
+<a class="button-link" href="/groceries/edit/batch">Add/Edit/Delete multiple grocery items </a>
 
 <ul>
 <% @user_groceries.each do | grocery_item | %>
@@ -21,7 +31,12 @@
 <input type="hidden" name="name" value="<%= grocery_item.name %>" >
 <input type="hidden" name="list"  value="<%= list.name.downcase %>">
 <input type="hidden" name="amount"  value="<%= grocery_item.amount %>">
+<span class="button-link ui button">
+<span>
 <input type="submit" value="Move to <%= list.name %>">
+</span>
+
+
 </form>
 </div>
 
@@ -32,11 +47,16 @@
 
 
 
-  <a href="/groceries/<%= grocery_item.id %>/edit">Edit</a>
+  <a class="button-link" href="/groceries/<%= grocery_item.id %>/edit">Edit</a>
   <div style="display: inline-block">
   <form action="/groceries/<%= grocery_item.id %>/delete" method="POST">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
+<span class="button-link ui button">
+<span>
 <input type="submit" value="Delete Item">
+</span>
+</span>
+
 </form>
   </div>
   </li>
@@ -52,3 +72,10 @@ BUTTON to MOVE to Kitchen cabinets
     then it will delete. never mind. that might not be possible
     so maybe we'll just send a form to POST "/items"
     to do that, we first modify the POST '/items' to have the feature to delete the 
+
+
+
+
+
+    
+      </div>

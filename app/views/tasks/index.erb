@@ -1,39 +1,21 @@
-<style>
-
-input[type="submit"]{
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-}
-
-.center-wrapper {
-    background-color: white;
-    border: 1px solid blue;
-    margin: 0 auto;
-    dispay: inline-block;
-    width: 700px;
-    padding-bottom: 200px;
-}
-
-body {
-
-    background-image: url("https://cdn.remodelista.com/wp-content/uploads/2016/12/alice-waters-kitchen-vignette-copper-pot-herbs-oils-1466x978.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-
-
-}
-
-
-
-</style>
 
 <div class="center-wrapper">
-<h1>Your Tasks</h1>
 
-<a href="/tasks/new">Add a new task </a>
+
+<div class="bannerbox">
+<img src="https://www.saveur.com/resizer/asaf8ciTyhcWxmNBSBTE4r-z6wE=/869x613/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/KUGEATRKRJLEY2BDQDA6DJCD6I.jpg">
+<a  href="">
+
+<span class="top-header"><h1>Your Tasks</h1></span>
+
+</a>
+</div>
+
+
+
+
+
+<a class="button-link" href="/tasks/new">Add a new task </a>
 
 
 <div class="ui celled list">
@@ -60,12 +42,12 @@ body {
     <div class="right floated content">
 
 
-  <a class="ui button" href="/tasks/<%= task.id %>/edit">Edit</a>
+  <a class="button-link" href="/tasks/<%= task.id %>/edit">Edit</a>
 
   <div style="display: inline-block">
   <form action="/tasks/<%= task.id %>/delete" method="POST">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
-<span class="ui button">
+<span class="button-link">
 <span>
 <input type="submit" value="Delete Task">
 </span>

@@ -1,15 +1,39 @@
-<h2> Recipes </h2>
+
+<div class="center-wrapper">
+<div class="bannerbox">
+<img src="https://www.saveur.com/resizer/asaf8ciTyhcWxmNBSBTE4r-z6wE=/869x613/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/KUGEATRKRJLEY2BDQDA6DJCD6I.jpg">
+<a  href="">
+
+<span class="top-header"><h1>Recipes</h1></span>
+
+</a>
+</div>
+
+<div class="main-content">
+<h2>Recipes </h2>
+
+<a class="button-link" href="/recipes/new">Add a new recipe</a>
+
 <ul>
 <% @recipes.each do |recipe| %>
   <li>
   <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a> -------------
-  <a href="/recipes/<%= recipe.id %>/edit">Edit</a>
+  <a class="button-link" href="/recipes/<%= recipe.id %>/edit">Edit</a>
   <div style="display: inline-block">
   <form action="/recipes/<%= recipe.id %>/delete" method="POST">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
+<span class="button-link ui button">
+<span>
 <input type="submit" value="Delete Recipe">
+</span>
+
 </form>
   </div>
   </li>
 <% end %>
 </ul>
+
+
+</div> <!-- div main-content -->
+
+</div> <!-- div center-wrapper -->

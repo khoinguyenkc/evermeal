@@ -1,57 +1,39 @@
-<style>
-
-input[type="submit"]{
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-}
-
-.center-wrapper {
-    background-color: white;
-    border: 1px solid blue;
-    margin: 0 auto;
-    dispay: inline-block;
-    width: 700px;
-    padding-bottom: 200px;
-}
-
-body {
-
-    background-image: url("https://cdn.remodelista.com/wp-content/uploads/2016/12/alice-waters-kitchen-vignette-copper-pot-herbs-oils-1466x978.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-
-
-}
-
-
-
-</style>
 
 <div class="center-wrapper">
-<h1><%= @list.name %></h1>
+
+    <div class="bannerbox">
+    <img src="https://www.saveur.com/resizer/asaf8ciTyhcWxmNBSBTE4r-z6wE=/869x613/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/KUGEATRKRJLEY2BDQDA6DJCD6I.jpg">
+    <a  href="">
+
+    <span class="top-header"><h1><%= @list.name %></h1></span>
+
+    </a>
+    </div>
+
+<div class="main-content">
+
+
 Note: later, make spoiled list only display the last 30 items or so spoiled no more. 
 dont want to turn it into a guiltfest
 <br>
 <% if @list.name.downcase != "spoiled" %>
 
-<a href="/items/new/<%= @list.name.downcase %>">Add an Item</a>
-<a href="/items/new/<%= @list.name.downcase %>/batch">Batch Add Items</a>
+<a class="button-link" href="/items/new/<%= @list.name.downcase %>">Add an Item</a>
+<a class="button-link" href="/items/new/<%= @list.name.downcase %>/batch">Batch Add Items</a>
 <% end %> 
-/items/new/:cabinet/batch
 
 
 
 
 
 
-<div class="ui celled list">
+<div class="celled-list">
 <% @list.items.each do | item | %>
     <div class="item">
 
     <div class="content">
+
+    <div class="left-side">
 
     <div class="header">
 
@@ -72,19 +54,25 @@ dont want to turn it into a guiltfest
       <% end %>
       <br>
 
+    </div> <!-- end of class left-side -->
+
       
 
           
 
-      <div class="right floated content">
+      <div class="right-side">
 
+
+      <div class="dropdown">
+        <button class="dropbtn">...</button>
+        <div class="dropdown-content">
 
   
-      <a class="ui button" href="/items/<%= item.id %>/edit">Edit</a>
+      <a class="dropdownmenu-link ui button" href="/items/<%= item.id %>/edit">Edit</a>
 
       <% if @list.name.downcase != "spoiled" %>
 
-    <a class="ui button" href="/recipes/search/<%=  item.name %>" >Search for recipes</a>
+    <a class="dropdownmenu-link ui button" href="/recipes/search/<%=  item.name %>" >Search for recipes</a>
     <% end %>
 
     <div style="display: inline-block">
@@ -92,10 +80,7 @@ dont want to turn it into a guiltfest
 <form action="/groceries" method="POST">
 <input type="hidden" name="source" value="<%= @list.name.downcase %>">
 <input type="hidden" name="name" value="<%=  item.name %>">
-<span class="ui button">
-<span>
-<input type="submit" value="Add to grocery"></span>
-</span>
+<a href=""><input class="dropdownmenu-link" type="submit" value="Add to grocery"></a>
 </form>
 </div>
 
@@ -119,10 +104,7 @@ dont want to turn it into a guiltfest
     <input type="hidden" name="name" value="<%= item.name %>" >
     <input type="hidden" name="list"  value="spoiled">
     <input type="hidden" name="amount"  value="<%= item.amount %>">
-    <span class="ui button">
-    <span>
-    <input type="submit" value="Mark as Spoiled">
-    </span>
+    <input class="dropdownmenu-link" type="submit" value="Mark as Spoiled">
 
     </form>
     </div>
@@ -131,11 +113,7 @@ dont want to turn it into a guiltfest
     <div style="display: inline-block">
     <form action="/items/<%= item.id %>/delete" method="POST">
     <input type="hidden" name="_method" value="delete">
-    <span class="ui button">
-    <span>
-    <input type="submit" value="Delete">
-    </span>
-
+    <input class="dropdownmenu-link" type="submit" value="Delete">
     </form>    
     </div>
 
@@ -145,7 +123,9 @@ dont want to turn it into a guiltfest
     (fridge <-> freezer only)
     -->
 
-     
+    </div> <!-- end class dropdown-content -->
+    </div> <!-- end class dropdown -->
+    
     </div>
     </div>
  
@@ -154,6 +134,11 @@ dont want to turn it into a guiltfest
     </div>
 
 
-<a href="items/edit/<%= @list.name.downcase %>/batch">Add/Remove/Edit Multiple Items</a>
+<a class="button-link" href="items/edit/<%= @list.name.downcase %>/batch">Add/Remove/Edit Multiple Items</a>
 
-</div> <!-- div center-wrapper -- >
+
+</div>
+
+
+
+</div> 

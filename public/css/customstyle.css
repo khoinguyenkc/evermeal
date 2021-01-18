@@ -1,0 +1,265 @@
+
+* {
+    font-family: Helvetica, Arial, Lato;
+}    
+    body {
+    margin-top: 0px;
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: Helvetica;
+    font-size: 12px;
+}
+
+
+ul li {
+    list-style-type: none;
+}
+
+.dropbtn {
+    background-color: grey;
+    color: white;
+    padding: 6px 15px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0px;
+    top: 30px; /* whataever it takes to be just below the button, too far down and it will disappear before user hover to meneu */
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+
+.dropdown-content a:hover  {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+.bannerbox {
+    position: relative;
+     display: inline-block; 
+     width: 700px; 
+     height: 450px; 
+    background-image: url('https://cdn.remodelista.com/wp-content/uploads/2016/12/green-craftsman-kitchen-berkeley-alice-waters-1466x977.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    border: 1px solid red;
+     overflow:hidden; 
+}
+
+.bannerbox img {
+    width: 100%;
+    opacity: 0.9;
+}
+
+
+.section-title {
+    /*position: absolute; left: 10; bottom: 20; border:1px solid green;  */
+
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    width: 100%;
+
+
+    color: white; 
+    font-family: Helvetica; 
+    font-style: italic; 
+    font-size: 2.5rem;
+
+}
+
+h1 {
+    color: white; 
+    font-family: Helvetica; 
+    font-weight: normal;
+    font-size: 3rem;
+
+}
+.top-header {
+    
+    border:1px solid orange; 
+
+
+    position: absolute;
+    top: 120px;
+    left: 160px;
+    width: 100%;
+
+}
+
+
+
+.center-wrapper {
+    background-color: white;
+    border: 3px solid red;
+    margin: 0 auto;
+    display: block;
+    width: 700px;
+}
+
+.main-content {
+    padding-top: 20px;
+    padding-bottom: 200px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.main-content h2 {
+    font-family: Helvetica; 
+    font-weight: normal;
+    border: 1px solid red;
+}
+
+
+body {
+
+    background-image: url("https://cdn.remodelista.com/wp-content/uploads/2016/12/alice-waters-kitchen-vignette-copper-pot-herbs-oils-1466x978.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+
+}
+
+.button-link {
+    display: inline-block;
+    background: #e0e1e2 none;
+    color: rgba(0,0,0,.6);
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    margin: 0 .25em 0 0;
+    /*padding: .78571429em 1.5em .78571429em;*/
+    padding: 1em .75em 1em;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.dropdownmenu-link {
+    display: block;
+    background: #e0e1e2 none;
+    color: rgba(0,0,0,.6);
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    margin: 0 .25em 0 0;
+    /*padding: .78571429em 1.5em .78571429em;*/
+    padding: .75em;
+    text-align: center;
+    text-decoration: none;
+    /* border-radius: 5px; */
+    cursor: pointer;
+    border-bottom: 1px solid grey;
+
+}
+
+input[type="submit" i] {
+    color: rgba(0,0,0,.6);
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    background: #e0e1e2 none;
+
+    font-size: 12px;
+    margin: 0px;
+    border: none;
+    border-bottom: 1px solid grey;
+    display: block;
+    width: 160px; /*doing 100% doesnt work for some reason */
+
+}
+
+/* FOOTER stuff */
+.dume {
+    border: 1px solid orange;
+    margin: 30px 0;
+    text-align: center;
+    color: red;
+}
+
+.dume a {
+    font-size: 12px;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+}
+
+
+/* end of footer stuff */
+
+/* TOP RIBBON stuff */
+
+.top-ribbon-menu {
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: orange;
+}
+.top-ribbon-menu a{
+    text-transform: uppercase;
+    margin-right: 20px;
+    font-size: 12px;
+}
+
+
+/* end of TOP RIBBON stuff */
+ 
+/* LIST stuff, (fridge, freezer...) */
+.celled-list {
+    background-color: #1b1c1d;
+    padding: 0px 15px;
+    border-radius: 10px;
+    margin-top: 30px;
+
+    margin-bottom: 30px;
+}
+.celled-list .item {
+    color: white;
+    font-family: Lato;
+    font-size: 14px;
+    border-bottom: 1px solid grey;
+    padding: 15px 20px;
+
+}
+
+
+.celled-list .item .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.celled-list .item .content .left-side {
+    border: 1px solid red;
+}
+
+.celled-list .item .content .right-side {
+    
+}
+
+.celled-list .item .content .left-side .header {
+    font-weight: bold;
+}
+
+ 
+
+
+/* end of  LIST stuff, (fridge, freezer...) */
+
