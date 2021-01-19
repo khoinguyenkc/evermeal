@@ -109,7 +109,7 @@ h1 {
 
 .center-wrapper {
     background-color: white;
-    border: 3px solid red;
+    border: 3px solid black;
     margin: 0 auto;
     display: block;
     width: 700px;
@@ -144,7 +144,7 @@ body {
     background: #e0e1e2 none;
     color: rgba(0,0,0,.6);
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-    margin: 0 .25em 0 0;
+    margin: 0 .25em 10px; 0;
     /*padding: .78571429em 1.5em .78571429em;*/
     padding: 1em .75em 1em;
     font-size: 16px;
@@ -246,6 +246,9 @@ input[type="submit" i] {
     align-items: center;
 }
 
+    
+}
+
 .celled-list .item .content .left-side {
     border: 1px solid red;
 }
@@ -256,6 +259,7 @@ input[type="submit" i] {
 
 .celled-list .item .content .left-side .header {
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
  
