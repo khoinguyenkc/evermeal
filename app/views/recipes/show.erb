@@ -1,41 +1,118 @@
 
+
 <h2><%= @recipe.name %></h2>
 <br>
 
 <a class="button-link" href="/recipes">Recipes</a> 
 
-<ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------
+------------------------------
+------------------------------
+
+COPIED OVER STUFF
+------------------------------
+------------------------------
+------------------------------
+
+
+<div class="center-wrapper">
+
+
+<div class="main-content">
+
+
+<div class="celled-list">
 <% @recipe.ingredients.each do | ingredient | %>
+    <div class="item">
+
+    <div class="content">
+
+    <div class="left-side">
+
+    <div class="header">
     <% rec_ing_instance = RecipeIngredient.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id) %>
-    
-    <li>    
+    <% if rec_ing_instance.amount && rec_ing_instance.amount != "" %>
     <%= rec_ing_instance.amount %> of 
-    <a href="/ingredients/<%= ingredient.id %>"><%= ingredient.name %></a>
-    -----------------
-    
-    <a href="/items/search/<%=  ingredient.name %>" >Search in kitchen</a>
-
-    <div style="display: inline-block">
-        <form action="/groceries" method="POST">
-        <input type="hidden" name="source" value="recipe-<%= @recipe.id %>">
-        <input type="hidden" name="name" value="<%=  ingredient.name %>">
-        <input type="submit" value="Add to grocery">
-        </form>
-    </div>
-
-
-     </li> 
     <% end %>
+    <a href="/ingredients/<%= ingredient.id %>"><%= ingredient.name %></a>
 
+    </div>
+    
+
+    </div> <!-- end of class left-side -->
+
+      
+
+          
+
+      <div class="right-side">
+
+
+      <div class="dropdown">
+        <button class="dropbtn">...</button>
+        <div class="dropdown-content">
+
+
+        <a class="dropdownmenu-link" href="/items/search/<%=  ingredient.name %>" >Search in kitchen</a>
+
+        <div style="display: inline-block">
+            <form action="/groceries" method="POST">
+            <input type="hidden" name="source" value="recipe-<%= @recipe.id %>">
+            <input type="hidden" name="name" value="<%=  ingredient.name %>">
+            <input class="dropdownmenu-link" type="submit" value="Add to grocery">
+            </form>
+        </div>
     
     
-</ul>
+    
+
+    </div> <!-- end class dropdown-content -->
+    </div> <!-- end class dropdown -->
+    
+    </div> <!-- end class right side -->
+    </div> <!-- end class content -->
+ 
+    </div> <!-- end class item -->
+    <% end %>
+    </div>  <!-- end class celled-list -->
+
+
+
+
+</div>
+
+
+
+</div> 
+
+
 <h3>Instructions: </h3>
 <%= @recipe.content %>
 
 <br><br>
 Comments:
+
+
+
 <ul>
+
+
+
+
+
 <% @recipe.comments.each do | comment | %>
     <li> 
     <%= comment.content %> 
@@ -55,4 +132,3 @@ Comments:
 <input id="hidden" type="hidden" name="_method" value="DELETE">
 <input type="submit" value="Delete Recipe">
 </form>
-

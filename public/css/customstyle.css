@@ -95,7 +95,7 @@ h1 {
 }
 .top-header {
     
-    border:1px solid orange; 
+    border:1px solid red; 
 
 
     position: absolute;
@@ -109,7 +109,7 @@ h1 {
 
 .center-wrapper {
     background-color: white;
-    border: 3px solid black;
+    border: 3px solid green;
     margin: 0 auto;
     display: block;
     width: 700px;
@@ -263,7 +263,9 @@ input[type="submit" i] {
 }
 
  
-
+.celled-list .item .content .left-side .header a {
+    color: white;
+}
 
 /* end of  LIST stuff, (fridge, freezer...) */
 
