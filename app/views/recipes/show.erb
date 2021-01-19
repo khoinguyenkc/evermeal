@@ -1,37 +1,20 @@
 
-
-<h2><%= @recipe.name %></h2>
-<br>
-
-<a class="button-link" href="/recipes">Recipes</a> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-------------------------------
-------------------------------
-------------------------------
-
-COPIED OVER STUFF
-------------------------------
-------------------------------
-------------------------------
-
-
 <div class="center-wrapper">
 
 
 <div class="main-content">
+
+<h2><%= @recipe.name %></h2>
+
+<a class="button-link" href="/recipes">Recipes</a> 
+
+<a class="button-link" href="/recipes/<%= @recipe.id %>/edit">Edit Recipe</a>
+<br>
+<form action="/recipes/<%=@recipe.id%>/delete" method="POST">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input class="button-link" type="submit" value="Delete Recipe">
+</form>
+
 
 
 <div class="celled-list">
@@ -92,20 +75,21 @@ COPIED OVER STUFF
 
 
 
+
+
+    <div class="recipe-instructions-section">
+<h3>Instructions </h3>
+<div class="instructions">
+<%= @recipe.content %>
 </div>
 
 
-
-</div> 
-
-
-<h3>Instructions: </h3>
-<%= @recipe.content %>
-
-<br><br>
-Comments:
+</div> <!-- end class recipe-instructions -->
 
 
+<div class="recipe-comments">
+
+<h3>Comments</h3>
 
 <ul>
 
@@ -125,10 +109,12 @@ Comments:
     
     <% end %>
 </ul>
-<br><br>
-<a href="/recipes/<%= @recipe.id %>/edit">Edit Recipe</a>
-<br>
-<form action="/recipes/<%=@recipe.id%>/delete" method="POST">
-<input id="hidden" type="hidden" name="_method" value="DELETE">
-<input type="submit" value="Delete Recipe">
-</form>
+</div> <!-- end class recipe-comments -->
+
+
+</div> <!-- end class main content -->
+
+
+
+</div>  <!-- end class center wrapper -->
+
