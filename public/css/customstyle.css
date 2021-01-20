@@ -341,3 +341,16 @@ input[type="submit" i] {
 /* ------------------------------*/
 /* end of Recipe Show stuff */
 /* ------------------------------*/
+
+
+
+.edit-comment .big-input-field, .new-comment .big-input-field {
+    display: block;
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    color: black;
+
+    margin-bottom: 20px;
+}

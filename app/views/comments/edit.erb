@@ -5,6 +5,7 @@
 
 <div class="main-content">
 
+<div class="edit-comment">
 
 
 <h2>Edit comment</h2>
@@ -12,12 +13,17 @@
 <input type="hidden" name="_method" value="patch">
 
 
-Content: <input type="text" name="content" value="<%= @comment.content %>"><br>
+Type here: 
+<textarea class="big-input-field" type="text" name="content" > 
+<%= @comment.content %>
+</textarea>
 
 
-<input type="submit" value="Save changes">
+
+<input class="button-link" type="submit" value="Save changes">
 </form> 
 
+</div> <!-- end class edit comment -->
 
 </div> <!-- end class main content -->
 </div> <!-- end class center wrapper -->
