@@ -24,7 +24,7 @@ ul li {
 }
 
 .dropbtn {
-    background-color: grey;
+    background-color: #228D57;
     color: white;
     padding: 6px 15px;
     font-size: 16px;
@@ -113,7 +113,7 @@ h1 {
 
 .center-wrapper {
     background-color: #228D57;
-    border: 3px solid black;
+    border: 3px solid red;
     margin: 0 auto;
     display: block;
     width: 700px;
@@ -147,7 +147,7 @@ body {
 .button-link {
     display: inline-block;
     background: #e0e1e2 none;
-    color: rgba(0,0,0,.6);
+    color: rgba(0,0,0,.8);
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     margin: 0 .25em 10px; 0;
     /*padding: .78571429em 1.5em .78571429em;*/
@@ -176,7 +176,7 @@ body {
 }
 
 input[type="submit" i] {
-    color: rgba(0,0,0,.6);
+    color: rgba(0,0,0,.8);
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     background: #e0e1e2 none;
 
@@ -246,6 +246,9 @@ input[type="submit" i] {
 
 }
 
+.celled-list .item:last-child {
+    border-bottom: none;
+}
 
 .celled-list .item .content {
     display: flex;
@@ -280,6 +283,7 @@ input[type="submit" i] {
 /* Recipe Show stuff */
 /* ------------------------------*/
 
+
 .recipe-instructions-section {
     margin-top: 100px;
 
@@ -287,15 +291,53 @@ input[type="submit" i] {
 
 .recipe-instructions-section h3 {
     border: 1px solid red;
+    
 }
 
 .recipe-instructions-section .instructions {
     border: 1px solid grey;
 }
 
+
+.recipe-heading {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid grey;
+
+}
+
+.recipe-heading .left-side {
+    border: 1px solid blue;
+}
+
+
+.recipe-heading .left-side h2 {
+    margin: 0;
+}
 .recipe-comments {
     margin-top: 100px;
 }
+
+
+.recipe-comments .comment-item {
+    border-bottom: 1px solid darkgrey;
+    padding-bottom: 20px;
+}
+
+
+.recipe-comments .comment-item .comment-logistics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipe-comments .comment-item .comment-logistics h4 {
+    margin-bottom: 10px;
+}
+
+
 /* ------------------------------*/
 /* end of Recipe Show stuff */
 /* ------------------------------*/

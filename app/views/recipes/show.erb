@@ -4,18 +4,42 @@
 
 <div class="main-content">
 
-<h2><%= @recipe.name %></h2>
 
-<a class="button-link" href="/recipes">Recipes</a> 
+<div class="recipe-heading">
+    <div class="left-side">
+        <div class="recipe-name">
+            <h2><%= @recipe.name %></h2>
+        </div>
+    </div> <!-- end class left side -->
 
-<a class="button-link" href="/recipes/<%= @recipe.id %>/edit">Edit Recipe</a>
-<br>
-<form action="/recipes/<%=@recipe.id%>/delete" method="POST">
-<input id="hidden" type="hidden" name="_method" value="DELETE">
-<input class="button-link" type="submit" value="Delete Recipe">
-</form>
+    <div class="right-side">
 
 
+    <div class="dropdown">
+      <button class="dropbtn">...</button>
+      <div class="dropdown-content">
+
+        <a class="button-link" href="/recipes">Recipes</a> 
+
+        <a class="button-link" href="/recipes/<%= @recipe.id %>/edit">Edit Recipe</a>
+        
+        <form action="/recipes/<%=@recipe.id%>/delete" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input class="button-link" type="submit" value="Delete Recipe">
+        </form>
+
+
+    </div> <!-- end class dropdown-content -->
+    </div> <!-- end class dropdown -->
+    
+    </div> <!-- end class right side -->
+
+
+
+
+</div> <!-- end class recipe heading-->
+
+<h3> Ingredients </h3>
 
 <div class="celled-list">
 <% @recipe.ingredients.each do | ingredient | %>
@@ -90,27 +114,45 @@
 <div class="recipe-comments">
 
 <h3>Comments</h3>
-
-<ul>
-
+<a class="button-link" href="/comments/new/<%= @recipe.id %>"> add comment </a>
 
 
 
 
 <% @recipe.comments.each do | comment | %>
-    <li> 
-    <%= comment.content %> 
-    <a href="/comments/<%= comment.id %>/edit">Edit</a>
-    <form action="/comments/<%= comment.id %>/delete" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-    
-    </li>
-    
-    <% end %>
-</ul>
-</div> <!-- end class recipe-comments -->
 
+    <div  class="comment-item">
+
+
+    <div class="comment-logistics">
+        <div class="left-side">
+            <h4><%= @recipe.user.username %></h4>
+        </div> <!-- end class left side -->
+
+        <div class="right-side">
+            <div class="dropdown">
+                <button class="dropbtn">...</button>
+                <div class="dropdown-content">
+                    <a class="dropdownmenu-link" href="/comments/<%= comment.id %>/edit">Edit</a>
+
+                    <form action="/comments/<%= comment.id %>/delete" method="POST">
+                        <input id="hidden" type="hidden" name="_method" value="DELETE">
+                        <input class="dropdownmenu-link" type="submit" value="Delete">
+                    </form>
+                </div> <!-- end class dropdown-content -->
+            </div> <!-- end class dropdown -->
+        </div> <!-- end class right side -->
+    </div> <!-- end class comment logistic-->
+
+    <div class="comment-content">
+        <%= comment.content %> 
+    </div>
+
+</div> <!-- end class comment-item -->
+
+    <% end %>
+
+</div> <!-- end class recipe-comments -->
 
 </div> <!-- end class main content -->
 

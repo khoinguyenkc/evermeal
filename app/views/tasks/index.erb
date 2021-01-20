@@ -18,12 +18,15 @@
 <a class="button-link" href="/tasks/new">Add a new task </a>
 
 
-<div class="ui celled list">
+<div class="celled-list">
 <% @tasks.each do |task| %>
   
   <div class="item">
 
   <div class="content">
+
+  <div class="left-side">
+
 
   <div class="header">
   <%= task.name %>
@@ -39,23 +42,37 @@
     <% end %>
     <% end %>
 
-    <div class="right floated content">
 
 
-  <a class="button-link" href="/tasks/<%= task.id %>/edit">Edit</a>
+    </div> <!-- end class lefft side -->
+
+
+
+    <div class="right-side">
+
+
+    <div class="dropdown">
+    <button class="dropbtn">...</button>
+    <div class="dropdown-content">
+
+
+
+  <a class="dropdownmenu-link" href="/tasks/<%= task.id %>/edit">Edit</a>
 
   <div style="display: inline-block">
   <form action="/tasks/<%= task.id %>/delete" method="POST">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
-<span class="button-link">
-<span>
-<input type="submit" value="Delete Task">
-</span>
+<input class="dropdownmenu-link" type="submit" value="Delete Task">
 
 </form>
   </div>
 
-  </div>  <%# of right floated content div%>
+
+  </div> <!-- end class dropdown-content -->
+  </div> <!-- end class dropdown -->
+
+
+  </div>  <%# of right side div%>
   </div> <%# of content div%>
   </div> <%# of item div%>
 
