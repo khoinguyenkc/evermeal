@@ -3,6 +3,13 @@
     font-family: Helvetica, Arial, Lato;
     color: white;
 }    
+
+input {
+    color: black;
+    padding: 10px; 
+    font-size: 14px;
+    margin: 10px;
+}
     body {
     margin-top: 0px;
 }
@@ -113,7 +120,7 @@ h1 {
 
 .center-wrapper {
     background-color: #228D57;
-    border: 3px solid red;
+    border: 3px solid blue;
     margin: 0 auto;
     display: block;
     width: 700px;
@@ -146,8 +153,11 @@ body {
 
 .button-link {
     display: inline-block;
-    background: #e0e1e2 none;
-    color: rgba(0,0,0,.8);
+    /* background: #e0e1e2 none; */
+    background: none;
+
+    /* color: rgba(0,0,0,.8); */
+    color: white;
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     margin: 0 .25em 10px; 0;
     /*padding: .78571429em 1.5em .78571429em;*/
@@ -155,11 +165,16 @@ body {
     font-size: 16px;
     text-decoration: none;
     border-radius: 5px;
+    border: 1px solid #e0e1e2;
     cursor: pointer;
 
 }
 
-.dropdownmenu-link {
+.button-link:hover {
+    background: rgba(0,0,0,.5);
+}
+
+.dropdownmenu-link, .dropdown-content input[type="submit" i]  {
     display: block;
     background: #e0e1e2 none;
     color: rgba(0,0,0,.6);
@@ -172,22 +187,32 @@ body {
     /* border-radius: 5px; */
     cursor: pointer;
     border-bottom: 1px solid grey;
+    font-size: 12px;
 
 }
 
 input[type="submit" i] {
-    color: rgba(0,0,0,.8);
+    /* color: rgba(0,0,0,.8); */
+    color: white;
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-    background: #e0e1e2 none;
+    /* background: #e0e1e2 none; */
+    background: none;
 
-    font-size: 12px;
+    font-size: 18px;
     margin: 0px;
-    border: none;
     border-bottom: 1px solid grey;
+    border: 1px solid #e0e1e2;
+
     display: block;
     width: 160px; /*doing 100% doesnt work for some reason */
 
 }
+
+
+input[type="submit" i]:hover {
+    background: rgba(0,0,0,.5);
+}
+
 
 /* FOOTER stuff */
 .dume {
@@ -343,6 +368,11 @@ input[type="submit" i] {
 /* ------------------------------*/
 
 
+/* ------------------------------*/
+/* Edit and New Comment Page stuff */
+/* ------------------------------*/
+
+
 
 .edit-comment .big-input-field, .new-comment .big-input-field {
     display: block;
@@ -353,4 +383,19 @@ input[type="submit" i] {
     color: black;
 
     margin-bottom: 20px;
+}
+
+
+/* ------------------------------*/
+/* end of Edit and New Comment Page stuff */
+/* ------------------------------*/
+
+
+
+/* ------------------------------*/
+/* Edit Groceries Page stuff */
+/* ------------------------------*/
+
+.batchedit-groceries input, .batchnew-groceries input, .new-groceries input, .edit-groceries input {
+    width: 250px;
 }

@@ -1,7 +1,13 @@
 
 
+<div class="center-wrapper">
+
+<div class="main-content">
+
+<div class="edit-groceries">
 
 <h2>Edit grocery item</h2>
+
 <form action="/groceries/<%= @groceryitem.id %>" method="POST">
 <input type="hidden" name="_method" value="PATCH">
 
@@ -9,5 +15,13 @@ Name: <input type="text" name="name" value="<%= @groceryitem.name %>" ><br>
 
 Amount:  <input type="text" name="amount" value="<%= @groceryitem.amount %>"> 
 <br>
-<input type="submit" value="Edit item">
+<input class="button-link" type="submit" value="Edit item">
 </form>
+
+
+
+</div> <!-- end class edit-groceries -->
+
+</div> <!-- end class main content -->
+</div> <!-- end class center wrapper -->
+
