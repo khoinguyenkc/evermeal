@@ -1,7 +1,16 @@
-<h1>Batch edit items</h1>
 
+
+
+
+<div class="center-wrapper">
+
+<div class="main-content">
+
+<div class="batchedit-listitem">
+
+
+<h2>Batch edit items</h2>
 (Do not have the same name more than once in a list. It won't process properly) <br>
-
 
 <form action="/items/batch" method="POST">
 <input type="hidden" name="_method" value="patch">
@@ -25,6 +34,13 @@
     <br>
     <% } %>
     
-<input type="submit" value="Save Changes">
+<input class="button-link" type="submit" value="Save Changes">
 </form>
 
+
+
+
+</div> <!-- end class batchedit-listitem -->
+
+</div> <!-- end class main content -->
+</div> <!-- end class center wrapper -->

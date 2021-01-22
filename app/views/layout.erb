@@ -16,11 +16,19 @@
 <header>
 <% if is_logged_in? %>
 <div class="top-ribbon-menu">
+<form id="topbar-searchbox" action="/items/search" method="POST">
+<input type="text" placeholder="Search an ingredient.." name="searchquery">
+</form>
+
 <a href="/">Home</a>
 <a href="/logout">Log out</a>
 </div>
 <% else %>
 <div class="top-ribbon-menu">
+<form id="topbar-searchbox"  action="/items/search" method="POST">
+<input type="text" placeholder="Search an ingredient.." name="searchquery">
+</form>
+
 <a href="/">Home</a>
 <a href="/login">Log in</a>
 </div>

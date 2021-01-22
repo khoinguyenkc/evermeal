@@ -195,6 +195,12 @@ class ItemsController < ApplicationController
       
     end
 
+
+    post '/items/search' do
+        redirect "/items/search/#{params[:searchquery]}"
+    end
+
+
     get '/items/search/:ingname' do
         #search thru 4 lists &accumulate results
         @searchquery = params[:ingname]

@@ -133,7 +133,7 @@ h1 {
 
 .center-wrapper {
     background-color: #228D57;
-    border: 3px solid orange;
+    border: 3px solid red;
     margin: 0 auto;
     display: block;
     width: 700px;
@@ -172,7 +172,7 @@ body {
     /* color: rgba(0,0,0,.8); */
     color: white;
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-    margin: 0 .25em 10px; 0;
+    margin: 0 .25em 10px; 
     /*padding: .78571429em 1.5em .78571429em;*/
     padding: 1em .75em 1em;
     font-size: 16px;
@@ -212,7 +212,7 @@ input[type="submit" i] {
     background: none;
 
     font-size: 18px;
-    margin: 0px;
+    margin-top: 10px;
     border-bottom: 1px solid grey;
     border: 1px solid #e0e1e2;
 
@@ -251,8 +251,8 @@ input[type="submit" i]:hover {
 .top-ribbon-menu {
     text-align: right;
     padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     background-color: orange;
 }
 .top-ribbon-menu a{
@@ -261,6 +261,11 @@ input[type="submit" i]:hover {
     font-size: 12px;
 }
 
+#topbar-searchbox {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
 
 /* end of TOP RIBBON stuff */
  
@@ -277,7 +282,7 @@ input[type="submit" i]:hover {
 }
 .celled-list .item {
     color: white;
-    font-family: Lato;
+    font-family: Lato, Helvetica, Arial;
     font-size: 14px;
     border-bottom: 1px solid grey;
     padding: 15px 20px;

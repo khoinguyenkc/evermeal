@@ -1,5 +1,15 @@
-<h1>Edit item</h1>
 
+
+
+
+<div class="center-wrapper">
+
+<div class="main-content">
+
+<div class="edit-listitem">
+
+
+<h2>Edit item</h2>
 
 <form action="/items/<%= @item.id %>" method="POST">
 <input type="hidden" name="_method" value="patch">
@@ -13,8 +23,17 @@ Cabinet: (required) <br>
 Amount: <input name="amount" value="<%= @item.amount %>" ><br>
 Good for <input name="expire" > more days from today. (This item was added X days ago - might code this later)<br>
 
-<input type="submit" value="Save Changes">
+<input class="button-link" type="submit" value="Save Changes">
 </form>
+
+
+
+
+
+</div> <!-- end class edit-listitem -->
+
+</div> <!-- end class main content -->
+</div> <!-- end class center wrapper -->
 
 
 

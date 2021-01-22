@@ -1,16 +1,43 @@
-  <% if !@resultarray.empty? %> 
 
-<ul>
-<% @resultarray.each do | item | %>
-    <li>
-    <% if item.amount && item.amount != "" %>
-        <%= item.amount %> of 
-    <% end %>
-    <%=  item.name %> in
-    <a href="<%=  item.list.name.downcase %>"><%=  item.list.name %></a>
-    </li>
-<% end %>
-</ul>
- <% else %> 
- There is no "<%= @searchquery %>" item found in your kitchen cabinets. 
+
+
+<div class="center-wrapper">
+
+<div class="main-content">
+
+<div class="searchresults-listitem">
+
+<h3>
+Search for item:
+</h3>
+
+<% if !@resultarray.empty? %> 
+
+  <div class="celled-list">
+
+    <% @resultarray.each do | item | %>
+      
+      <div class="item">
+
+      <%=  item.name %> in
+      <a href="<%=  item.list.name.downcase %>"><%=  item.list.name %></a>
+
+      </div> <!-- end class item -->
+
+
+    <% end %> <!-- end loopp resultarray -->
+  </div> <!-- end class celledlist -->
+
+<% else %> 
+There is no "<%= @searchquery %>" item found in your kitchen cabinets. 
 <% end %> 
+
+
+
+
+
+
+</div> <!-- end class searchresults-listitem -->
+
+</div> <!-- end class main content -->
+</div> <!-- end class center wrapper -->

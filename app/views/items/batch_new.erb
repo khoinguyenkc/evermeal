@@ -1,4 +1,16 @@
-Add multiple kitchen items to <%= @list.name %>
+
+
+
+<div class="center-wrapper">
+
+<div class="main-content">
+
+<div class="batchnew-listitem">
+
+
+<h2>Add multiple kitchen items to <%= @list.name %>
+</h2>
+
 
 <form action="/items" method="POST">
 <input name="name" type="hidden" value="">
@@ -12,6 +24,13 @@ Good for <input name="[items][][expire]"> more days from today<br>
 <br>
 <% } %>
 
-<input type="submit" value="Add Items">
+<input class="button-link" type="submit" value="Add Items">
 
 </form>
+
+
+
+</div> <!-- end class batchnew-listitem -->
+
+</div> <!-- end class main content -->
+</div> <!-- end class center wrapper -->
