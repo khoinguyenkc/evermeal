@@ -1,5 +1,15 @@
 
-<h2>Edit  task:</h2>
+
+<div class="center-wrapper">
+
+<div class="main-content">
+
+<div class="edit-task">
+
+
+<h2>Edit  task</h2>
+<form action="/tasks" method="POST">
+
 <form action="/tasks/<%= @task.id %>" method="POST">
 <input type="hidden" name="_method" value="patch">
 
@@ -7,5 +17,12 @@
 Name: <input type="text" name="name" value="<%= @task.name %>" ><br>
 Due in  <input type="text" name="due" > days from now
 <br>
-<input type="submit" value="Save Changes">
+<input class="button-link" type="submit" value="Save Changes">
 </form>
+
+
+
+</div> <!-- end class edit-task -->
+
+</div> <!-- end class main content -->
+</div> <!-- end class center wrapper -->

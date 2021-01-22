@@ -133,7 +133,7 @@ h1 {
 
 .center-wrapper {
     background-color: #228D57;
-    border: 3px solid red;
+    border: 3px solid pink;
     margin: 0 auto;
     display: block;
     width: 700px;
@@ -449,4 +449,19 @@ input[type="submit" i]:hover {
 
 /* ------------------------------*/
 /* end of  Recipes CRUD stuff */
+/* ------------------------------*/
+
+
+/* ------------------------------*/
+/* Tasks CRUD stuff stuff */
+/* ------------------------------*/
+
+
+.edit-task input, .new-task input, .batchedit-task input, .batchnew-task input {
+    width: 300px;
+}
+
+
+/* ------------------------------*/
+/* end of Tasks CRUD stuff stuff */
 /* ------------------------------*/
