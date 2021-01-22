@@ -1,4 +1,15 @@
-<h1>Edit item</h1>
+
+
+
+
+
+<div class="center-wrapper">
+
+<div class="main-content">
+
+<div class="edit-recipe">
+
+<h2>Edit item</h2>
 
 
 <form action="/recipes/<%= @recipe.id %>" method="POST">
@@ -11,7 +22,7 @@ Name: (required) <input name="recipe[name]" value="<%= @recipe.name %>"><br>
 <br>
 Instruction (required): 
 <br>
-<textarea name="recipe[content]" rows="15" cols="50"><%= @recipe.content %>"</textarea><br>
+<textarea name="recipe[content]"><%= @recipe.content %>"</textarea><br>
 <br>
 Ingredients: <br>
 (Do not have the same ingredient more than once in a recipe. It won't process properly) <br>
@@ -19,7 +30,7 @@ Ingredients: <br>
     <% rec_ing_instance = RecipeIngredient.find_by(ingredient_id: ingredient.id, recipe_id: @recipe.id) %>
     
       
-    Amount: <input name="recipe[ing][][amount]" value="<%= rec_ing_instance.amount %>">
+    Amount: <input name="recipe[ing][][amount]" value="<%= rec_ing_instance.amount %>"> of
     
     Ingredient: <input name="recipe[ing][][name]" value="<%= ingredient.name %>">
     <br>
@@ -27,11 +38,19 @@ Ingredients: <br>
 
 <% howmany = 15 - @recipe.ingredients.size %>
 <% howmany.times {  %>
-Amount: <input name="recipe[ing][][amount]">
+Amount: <input name="recipe[ing][][amount]"> of
 Ingredient: <input name="recipe[ing][][name]">
 <br>
 <% } %>
 
-<input type="submit" value="Save Changes">
+<input class="button-link" type="submit" value="Save Changes">
 </form>
 
+
+
+
+
+</div> <!-- end class edit-recipe -->
+
+</div> <!-- end class main content -->
+</div> <!-- end class center wrapper -->

@@ -4,12 +4,25 @@
     color: white;
 }    
 
-input {
+input, textarea {
     color: black;
     padding: 10px; 
     font-size: 14px;
     margin: 10px;
+    background:rgba(255,255,255, 0.3);
+    border: 1px solid grey;
+    border-radius: 5px;
+
 }
+
+textarea {
+    border-radius: 10px;
+    width: 90%;
+    box-sizing: border-box;
+
+}
+
+
     body {
     margin-top: 0px;
 }
@@ -120,7 +133,7 @@ h1 {
 
 .center-wrapper {
     background-color: #228D57;
-    border: 3px solid blue;
+    border: 3px solid orange;
     margin: 0 auto;
     display: block;
     width: 700px;
@@ -393,9 +406,42 @@ input[type="submit" i]:hover {
 
 
 /* ------------------------------*/
-/* Edit Groceries Page stuff */
+/*  Groceries Page stuff */
 /* ------------------------------*/
 
 .batchedit-groceries input, .batchnew-groceries input, .new-groceries input, .edit-groceries input {
     width: 250px;
 }
+
+/* ------------------------------*/
+/* end of  Groceries Page stuff */
+/* ------------------------------*/
+
+
+
+
+
+/* ------------------------------*/
+/*  Recipes CRUD  stuff */
+/* ------------------------------*/
+.new-recipe textarea {
+    height: 300px;
+}
+
+
+.searchresults-recipes .celled-list .item a {
+    color: white;
+    font-family: Lato;
+    font-size: 14px;
+    font-family: Helvetica, Arial, Lato;
+    font-weight: bold;
+
+}
+
+.searchresults-recipes h3 {
+    font-weight: normal
+}
+
+/* ------------------------------*/
+/* end of  Recipes CRUD stuff */
+/* ------------------------------*/

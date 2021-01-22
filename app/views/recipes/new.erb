@@ -1,4 +1,17 @@
+
+
+
+
+
+<div class="center-wrapper">
+
+<div class="main-content">
+
+<div class="new-recipe">
+
 <h2>Create a new recipe</h2>
+
+
 
 <form action="/recipes" method="POST">
 Name: (required) <input name="recipe[name]" ><br>
@@ -12,6 +25,16 @@ Ingredient: <input name="recipe[ing][][name]">
 <% } %>
 Instruction (required): 
 <br>
-<textarea name="recipe[content]" rows="15" cols="50">Type your cooking instructions here</textarea><br>
-<input type="submit" value="Add Recipe">
+<textarea name="recipe[content]">Type your cooking instructions here</textarea><br>
+<input class="button-link" type="submit" value="Add Recipe">
 </form>
+
+
+
+
+
+
+</div> <!-- end class new-recipe -->
+
+</div> <!-- end class main content -->
+</div> <!-- end class center wrapper -->
