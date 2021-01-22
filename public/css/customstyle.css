@@ -133,7 +133,7 @@ h1 {
 
 .center-wrapper {
     background-color: #228D57;
-    border: 3px solid pink;
+    border: 3px solid red;
     margin: 0 auto;
     display: block;
     width: 700px;
@@ -465,3 +465,25 @@ input[type="submit" i]:hover {
 /* ------------------------------*/
 /* end of Tasks CRUD stuff stuff */
 /* ------------------------------*/
+.login-page .bigbox, .signup-page .bigbox {
+    margin: 100px auto 100px;
+    padding: 50px 0;
+    /* border: 1px solid red; */
+    background:rgba(255,255,255, 0.15);
+
+    width: 400px; 
+    text-align: center;
+}
+
+.login-page .bigbox .flexparent,  .signup-page .bigbox .flexparent {
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.login-page input, .signup-page input {
+    /*need this to make the flex thing wrap */
+    display: block;
+    width: 200px;
+}
