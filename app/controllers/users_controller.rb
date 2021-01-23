@@ -17,14 +17,19 @@ class UsersController < ApplicationController
       post '/signup' do
         #process, then redirect to /
         if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
+          if validate_signup(params)
           @user = User.new(username: params[:username], email: params[:email], password: params[:password])
           @user.save
           session[:user_id] = @user.id
           initialize_user_lists #order matters. need to set session user id first before i can use this
           redirect '/'
-        else #signup inputs problematic
+          else #signup inputs problematic
+            redirect '/signup'
+          end
+        else
           redirect '/signup'
-        end
+
+      end
     
       end
     
@@ -58,5 +63,23 @@ class UsersController < ApplicationController
         session.clear
         redirect '/login'
       end
+
+
+
+
+        helpers do
+
+          def validate_signup(params)
+            if params[:password].length > 6 && params[:email].match?(/.{1,}@[^.]{1,}/)
+              return true
+            else
+              return false
+            end
+          end
+
+
+        end
+
+
     
 end
