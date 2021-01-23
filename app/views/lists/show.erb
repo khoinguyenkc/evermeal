@@ -13,16 +13,13 @@
 <div class="main-content">
 
 
+<h2><%= @list.name %></h2>
 
-
-Note: later, make spoiled list only display the last 30 items or so spoiled no more. 
-dont want to turn it into a guiltfest
-<br>
-<% if @list.name.downcase != "spoiled" %>
 
 <a class="button-link" href="/items/new/<%= @list.name.downcase %>">Add an Item</a>
 <a class="button-link" href="/items/new/<%= @list.name.downcase %>/batch">Batch Add Items</a>
-<% end %> 
+<a class="button-link" href="items/edit/<%= @list.name.downcase %>/batch">Add/Remove/Edit Multiple Items</a>
+
 
 
 
@@ -45,6 +42,7 @@ dont want to turn it into a guiltfest
         <%=  item.name %>
     </div>
     
+    <div class="subheader">
     <% if item.fresh_for_x_more_days  %>
     <% if item.fresh_for_x_more_days < 0 %>
         <%= -item.fresh_for_x_more_days %> days past due 
@@ -55,6 +53,8 @@ dont want to turn it into a guiltfest
       <% end %>
       <% end %>
       <br>
+
+      </div> <!-- end of class subheader -->
 
     </div> <!-- end of class left-side -->
 
@@ -136,7 +136,6 @@ dont want to turn it into a guiltfest
     </div>
 
 
-<a class="button-link" href="items/edit/<%= @list.name.downcase %>/batch">Add/Remove/Edit Multiple Items</a>
 
 
 </div>

@@ -1,6 +1,8 @@
 
 * {
-    font-family: Helvetica, Arial, Lato;
+    /* font-family: Helvetica, Arial, Lato; */
+        font-family: Lato, Helvetica, Arial ;
+
     color: white;
 }    
 
@@ -30,8 +32,8 @@ textarea {
 
 a {
     text-decoration: none;
-    color: black;
-    font-family: Helvetica;
+    color: white;
+    /* font-family: Helvetica; */
     font-size: 12px;
 }
 
@@ -84,7 +86,7 @@ ul li {
     background-repeat: no-repeat;
     background-size: cover;
   
-    border: 1px solid red;
+    /* border: 1px solid red; */
      overflow:hidden; 
 }
 
@@ -112,14 +114,14 @@ ul li {
 
 h1 {
     color: white; 
-    font-family: Helvetica; 
+    /* font-family: Helvetica;  */
     font-weight: normal;
     font-size: 3rem;
 
 }
 .top-header {
     
-    border:1px solid red; 
+    /* border:1px solid red;  */
 
 
     position: absolute;
@@ -133,7 +135,10 @@ h1 {
 
 .center-wrapper {
     background-color: #228D57;
-    border: 3px solid red;
+    /* background-color:     #228B22; */
+
+    #228B22
+    border: 1px solid lightslategrey;
     margin: 0 auto;
     display: block;
     width: 700px;
@@ -147,7 +152,7 @@ h1 {
 }
 
 .main-content h2 {
-    font-family: Helvetica; 
+    /* font-family: Helvetica;  */
     font-weight: normal;
     border: 1px solid red;
     font-size: 45px;
@@ -183,8 +188,8 @@ body {
 
 }
 
-.button-link:hover {
-    background: rgba(0,0,0,.5);
+.button-link:hover, a.dropdownmenu-link:hover, .dropdown-content input[type="submit" i]:hover {
+    background: rgba(0,0,0,.3);
 }
 
 .dropdownmenu-link, .dropdown-content input[type="submit" i]  {
@@ -200,6 +205,7 @@ body {
     /* border-radius: 5px; */
     cursor: pointer;
     border-bottom: 1px solid grey;
+    border-radius: 0;
     font-size: 12px;
 
 }
@@ -229,7 +235,7 @@ input[type="submit" i]:hover {
 
 /* FOOTER stuff */
 .dume {
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     margin: 30px 0;
     text-align: center;
     color: red;
@@ -253,7 +259,9 @@ input[type="submit" i]:hover {
     padding-right: 10px;
     padding-top: 2px;
     padding-bottom: 2px;
-    background-color: orange;
+    background-color:DarkOliveGreen;
+    /* background-color: #228D57; */
+
 }
 .top-ribbon-menu a{
     text-transform: uppercase;
@@ -263,10 +271,15 @@ input[type="submit" i]:hover {
 
 #topbar-searchbox {
     display: inline-block;
-    margin: 0;
+    margin: 10px;
     padding: 0;
 }
 
+#topbar-searchbox input {
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+}
 /* end of TOP RIBBON stuff */
  
 /* LIST stuff, (fridge, freezer...) */
@@ -283,7 +296,7 @@ input[type="submit" i]:hover {
 .celled-list .item {
     color: white;
     font-family: Lato, Helvetica, Arial;
-    font-size: 14px;
+    font-size: 16px;
     border-bottom: 1px solid grey;
     padding: 15px 20px;
 
@@ -317,7 +330,12 @@ input[type="submit" i]:hover {
 
  
 .celled-list .item .content .left-side .header a {
+    font-size: 14px;
     color: white;
+}
+
+.celled-list .item .content .left-side .subheader {
+    font-weight: 300;
 }
 
 /* end of  LIST stuff, (fridge, freezer...) */
@@ -339,6 +357,7 @@ input[type="submit" i]:hover {
 
 .recipe-instructions-section .instructions {
     border: 1px solid grey;
+    font-weight: 300;
 }
 
 
@@ -376,8 +395,13 @@ input[type="submit" i]:hover {
     align-items: center;
 }
 
+.recipe-comments .comment-item .comment-content {
+    font-weight: 300;
+}
+
 .recipe-comments .comment-item .comment-logistics h4 {
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 
@@ -438,7 +462,7 @@ input[type="submit" i]:hover {
     color: white;
     font-family: Lato;
     font-size: 14px;
-    font-family: Helvetica, Arial, Lato;
+    font-family: Lato, Helvetica, Arial ;
     font-weight: bold;
 
 }

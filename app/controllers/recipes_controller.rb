@@ -124,7 +124,7 @@ class RecipesController < ApplicationController
             if therecipe
                 recipeowner = therecipe.user 
                 if recipeowner == current_user 
-                    
+                    therecipe.update(content: params[:recipe][:content])
                     #add new ings and modify existent ings:
                     process_ingredients_of_recipe(params, therecipe)
                     #clear old ings:
