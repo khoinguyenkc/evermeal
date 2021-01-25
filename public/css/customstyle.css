@@ -236,7 +236,11 @@ input[type="submit" i]:hover {
 /* FOOTER stuff */
 .dume {
     /* border: 1px solid orange; */
+<<<<<<< HEAD
     padding3: 30px 0;
+=======
+    padding: 30px 0;
+>>>>>>> 459ec2c8d8204ce09b3c5322bdf5b9983e5b6719
     text-align: center;
     color: red;
 }
